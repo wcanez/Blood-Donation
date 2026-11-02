@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Login | Blood Donation Bank</title>
+	<!-- Bootstrap 5.3 CSS -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<!-- Custom CSS -->
+	<link rel="stylesheet" href="style.css">
+</head>
+
+<body class="inner-page d-flex flex-column min-vh-100">
+
+	<!-- Navbar -->
+	<nav class="navbar navbar-expand-lg sticky-top">
+		<div class="container">
+		  <a class="navbar-brand d-flex align-items-center" href="home.html">
+         <img src="./images/blood-bank-logo.jpg" alt="Blood Bank Logo" class="blood-bank-logo">
+    <span>BLOOD BANK</span></a>
+
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarNav">
+				<ul class="navbar-nav ms-auto text-center">
+					<li class="nav-item"><a class="nav-link" href="home.html#home">Home</a></li>
+					<li class="nav-item"><a class="nav-link" href="home.html#about">About</a></li>
+					<li class="nav-item"><a class="nav-link" href="register_donor.html">Donors</a></li>
+					<li class="nav-item ms-lg-3">
+						<a class="btn btn-primary-custom" href="login.html">Login</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<!-- Login Section -->
+	<main class="flex-grow-1 d-flex align-items-center py-5">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-md-5">
+					<!-- LOGIN CARD -->
+					<div class="custom-card" id="loginCard">
+						<div class="text-center mb-4">
+							<h2 class="fw-bold">Welcome Back</h2>
+							<p class="text-muted">Enter your credentials to access your account</p>
+						</div>
+						<!-- Alert for errors/success -->
+						<div id="loginAlert" class="alert alert-danger d-none" role="alert"></div>
+						<div id="loginSuccess" class="alert alert-success d-none" role="alert"></div>
+
+						<form action="login_process.php" method="POST">
+							<div class="mb-3">
+								<label class="form-label fw-medium">Email Address</label>
+								<input type="email" name="email" class="form-control" placeholder="admin@example.com"
+									required>
+							</div>
+							<div class="mb-4">
+								<label class="form-label fw-medium">Password</label>
+								<input type="password" name="password" class="form-control" placeholder="admin123"
+									required>
+							</div>
+							<button type="submit" class="btn btn-primary-custom">Login</button>
+						</form>
+						<div class="text-center mt-4">
+							<p class="small text-muted mb-0">Don't have an account? <a href="javascript:void(0)"
+									onclick="toggleForms()" class="text-danger fw-bold">Sign Up</a></p>
+						</div>
+					</div>
+
+					<!-- REGISTER CARD -->
+					<div class="custom-card d-none" id="registerCard">
+						<div class="text-center mb-4">
+							<h2 class="fw-bold">Create an Account</h2>
+							<p class="text-muted">Register as a new Blood Bank Admin</p>
+						</div>
+						<form action="register_admin.php" method="POST">
+							<div class="mb-3">
+								<label class="form-label fw-medium">Email Address</label>
+								<input type="email" name="email" class="form-control" placeholder="newadmin@example.com"
+									required>
+							</div>
+							<div class="mb-4">
+								<label class="form-label fw-medium">Choose Password</label>
+								<input type="password" name="password" class="form-control" placeholder="••••••••"
+									required>
+							</div>
+							<button type="submit" class="btn btn-primary-custom w-100 py-3">Register Admin</button>
+						</form>
+						<div class="text-center mt-4">
+							<p class="small text-muted mb-0">Already have an account? <a href="javascript:void(0)"
+									onclick="toggleForms()" class="text-danger fw-bold">Login</a></p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+
+	<!-- Footer -->
+	<footer>
+		<div class="container text-center">
+			<p class="mb-0">&copy; 2025 Blood Donation System. All rights reserved.</p>
+		</div>
+	</footer>
+
+	<!-- Bootstrap 5.3 JS -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+	<script>
+		// Check for error/success in URL and display banner
+		const urlParams = new URLSearchParams(window.location.search);
+		const alertBox = document.getElementById('loginAlert');
+		const successBox = document.getElementById('loginSuccess');
+
+		if (urlParams.has('error')) {
+			const error = urlParams.get('error');
+			if (error === 'email_exists') {
+				alertBox.textContent = "This email is already registered.";
+				toggleForms(); // Keep them on the register form
+			} else if (error === 'invalid_credentials') {
+				alertBox.textContent = "Invalid email or password. Please try again.";
+			} else {
+				alertBox.textContent = "An error occurred. Please try again.";
+			}
+			alertBox.classList.remove('d-none');
+		}
+
+		if (urlParams.has('success') && urlParams.get('success') === 'registered') {
+			successBox.textContent = "Registration successful! You can now log in.";
+			successBox.classList.remove('d-none');
+		}
+
+		// Clear alert on typing
+		document.querySelectorAll('input').forEach(input => {
+			input.addEventListener('input', () => {
+				alertBox.classList.add('d-none');
+				successBox.classList.add('d-none');
+			});
+		});
+
+		// Toggle forms function
+		function toggleForms() {
+			const loginCard = document.getElementById('loginCard');
+			const registerCard = document.getElementById('registerCard');
+
+			loginCard.classList.toggle('d-none');
+			registerCard.classList.toggle('d-none');
+
+			// Hide any existing alerts on toggle
+			alertBox.classList.add('d-none');
+			successBox.classList.add('d-none');
+		}
+	</script>
+</body>
+
+</html>

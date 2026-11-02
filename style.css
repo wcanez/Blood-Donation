@@ -1,0 +1,534 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --primary-color: #D0021B;
+  --primary-hover: #A00115;
+  --secondary-color: #F9F9FB;
+  --text-dark: #1A1A1A;
+  --text-light: #666666;
+  --white: #ffffff;
+  --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  --transition: all 0.3s ease;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  color: var(--text-dark);
+  background-color: var(--secondary-color);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+
+/* Blood Bank Logo */
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.blood-bank-logo {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+}
+
+/* Navbar */
+.navbar {
+    background-color: #ffffff !important;
+    padding: 15px 0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+/* Navbar Brand */
+.navbar .navbar-brand {
+    color: #D0021B !important;
+    font-weight: 800;
+}
+
+/* Navbar Links */
+.navbar .nav-link {
+    color: #1A1A1A !important;
+    font-weight: 500;
+}
+
+.navbar .nav-link:hover,
+.navbar .nav-link.active {
+    color: #D0021B !important;
+}
+
+  .navbar-nav .btn-primary-custom {
+    display: block;
+    width: 100%;
+  }
+
+  
+/* =========================
+   HOME PAGE HERO BACKGROUND
+========================= */
+
+
+.home-hero {
+    position: relative;
+    min-height: 600px;
+    height: 90vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+    color: var(--white);
+   
+ background-image: linear-gradient(rgba(0, 0, 0, 0.45), rgba(90, 0, 15, 0.55)), 
+  url("./images/home-blood-bg.jpeg");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+ 
+.home-hero h1 {
+    color: #ffffff;
+    font-size: clamp(35px, 5vw, 60px);
+    font-weight: 800;
+}
+
+.home-hero p {
+    color: #ffffff;
+    font-size: 19px;
+    margin-bottom: 30px;
+}
+
+.home-hero {
+    position: relative;
+    isolation: isolate;
+}
+
+.home-hero > * {
+    position: relative;
+    z-index: 2;
+}
+
+/* Focus Effect */
+.btn-primary-custom:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(208, 2, 27, 0.2);
+}
+
+/* Card Styling */
+
+.custom-card {
+  background: var(--white);
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+  border: 1px solid rgba(0,0,0,0.05);
+}
+
+.custom-card:hover {
+  transform: translateY(-10px);
+}
+
+/* Responsive */
+
+@media (max-width: 768px) {
+    .home-hero {
+        min-height: 450px;
+         height: auto;
+        padding: 70px 15px;
+    }
+
+    .home-hero p {
+        font-size: 16px;
+    }
+}
+
+  .section-title {
+    margin-bottom: 30px;
+  }
+
+
+/* ==================================================
+     SMALL MOBILE SCREENS
+================================================== */
+@media (max-width: 575.98px) {
+  .navbar {
+    padding: 12px 0;
+  }
+
+  .navbar-brand {
+    font-size: 1.05rem;
+    font-weight: 800;
+  }
+
+.navbar .navbar-toggler {
+    border-color: #D0021B;
+}
+
+.navbar .navbar-toggler-icon {
+    filter: none;
+}
+
+  .home-hero {
+    padding: 65px 0;
+  }
+
+  .home-hero-content h1 {
+    font-size: clamp(2rem, 9vw, 2.8rem);
+    line-height: 1.15;
+  }
+
+  .home-hero-content p {
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+
+  .section-padding {
+    padding: 25px 0;
+  }
+
+  .custom-card {
+    padding: 22px 18px;
+  }
+}
+
+.inner-page {
+    min-height: 100vh;
+    background:
+        linear-gradient(rgba(255, 255, 255, 0.85),
+                        rgba(255, 255, 255, 0.85)),
+        url("./images/blood-donor-bg.jpg") center center / cover no-repeat fixed;
+}
+
+/* ==============================
+   DONOR DASHBOARD BACKGROUND
+================================ */
+
+.donor-dashboard {
+    min-height: 85vh;
+    position: relative;
+    overflow: hidden;
+
+    background-image:
+        linear-gradient(
+            rgba(255, 240, 242, 0.55),
+            rgba(255, 240, 242, 0.55)
+        ),
+        url("./images/blood-donor-bg.jpg");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+}
+
+/* Decorative Background Icons */
+
+.donor-dashboard::before {
+    content: "\F415";
+    font-family: "bootstrap-icons";
+    position: absolute;
+    top: 100px;
+    left: 4%;
+    font-size: 130px;
+    color: rgba(220, 20, 60, 0.10);
+    transform: rotate(-15deg);
+    pointer-events: none;
+}
+
+.donor-dashboard::after {
+    content: "\F4DA";
+    font-family: "bootstrap-icons";
+    position: absolute;
+    right: 5%;
+    bottom: 50px;
+    font-size: 150px;
+    color: rgba(220, 20, 60, 0.10);
+    transform: rotate(15deg);
+    pointer-events: none;
+}
+
+/* ==============================
+   DASHBOARD HEADING
+================================ */
+
+.donor-heading {
+    position: relative;
+    z-index: 1;
+    margin-bottom: 40px;
+    padding: 25px 0;
+}
+
+.donor-heading h1 {
+    font-size: clamp(32px, 5vw, 55px);
+    font-weight: 800;
+    color: #a80018;
+    font-family: 'Poppins', sans-serif;
+}
+
+.donor-heading p {
+    font-size: 20px;
+    font-weight: 500;
+    color: #666;
+    font-style: italic;
+}
+
+.donor-heading p::before,
+.donor-heading p::after {
+    content: "";
+    display: inline-block;
+    width: 65px;
+    height: 2px;
+    background: #e8a0aa;
+    margin: 0 15px 6px;
+}
+
+/* ==============================
+   DONOR TABLE CARD
+================================ */
+
+.donor-table-card {
+    position: relative;
+    z-index: 2;
+    background: rgba(255, 255, 255, 0.94);
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 10px 35px rgba(120, 0, 20, 0.15);
+    border: 1px solid #f5dadd;
+}
+
+/* Table Header */
+
+.donor-table-card thead th {
+    background: #b8001c;
+    color: white;
+    padding: 18px 15px;
+    font-weight: 600;
+    white-space: nowrap;
+    border: none;
+}
+
+.donor-table-card thead th:first-child {
+    border-radius: 10px 0 0 0;
+}
+
+.donor-table-card thead th:last-child {
+    border-radius: 0 10px 0 0;
+}
+
+/* Table Body */
+
+.donor-table-card tbody td {
+    padding: 17px 15px;
+    color: #333;
+    font-size: 15px;
+    white-space: nowrap;
+}
+
+.donor-table-card tbody tr:nth-child(even) {
+    background-color: #fff0f2;
+}
+
+.donor-table-card tbody tr:hover {
+    background-color: #ffe2e6;
+}
+
+/* Blood Group Badge */
+
+.donor-table-card .badge {
+    background: #dc243c !important;
+    padding: 8px 13px;
+    border-radius: 20px;
+    font-size: 13px;
+}
+
+/* Bottom Message */
+
+.donor-footer-text {
+    color: #a80018;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.donor-footer-text i {
+    color: #d00020;
+    margin-right: 5px;
+}
+
+/* ==============================
+   RESPONSIVE DESIGN
+================================ */
+
+@media (max-width: 768px) {
+
+    .donor-heading {
+        margin-bottom: 20px;
+    }
+
+    .donor-heading p {
+        font-size: 15px;
+    }
+
+    .donor-heading p::before,
+    .donor-heading p::after {
+        width: 25px;
+        margin: 0 7px 5px;
+    }
+
+    .donor-table-card {
+        padding: 10px;
+        border-radius: 12px;
+    }
+
+    .donor-table-card tbody td {
+        padding: 12px;
+        font-size: 13px;
+    }
+
+    .donor-dashboard::before {
+        font-size: 80px;
+    }
+
+    .donor-dashboard::after {
+        font-size: 90px;
+    }
+}
+
+
+/* Footer */
+
+footer {
+  background: var(--text-dark);
+  color: var(--white);
+  padding: 60px 0 20px;
+}
+
+.footer-content {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding-top: 20px;
+  text-align: center;
+  font-size: 0.9rem;
+  opacity: 0.7;
+}
+
+
+
+/* ==================================================
+      REDUCED MOTION ACCESSIBILITY
+================================================== */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Common buttons */
+.btn-primary-custom,
+.btn-register {
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    width: auto !important;
+    min-width: 0;
+    padding: 10px 22px !important;
+    background: #D0021B !important;
+    color: #ffffff !important;
+    border: 1px solid #D0021B !important;
+    border-radius: 8px !important;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px !important;
+    font-weight: 600;
+    text-decoration: none !important;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-primary-custom:hover,
+.btn-register:hover {
+    background: #A00115 !important;
+    border-color: #A00115 !important;
+    color: #ffffff !important;
+    transform: translateY(-2px);
+}
+
+/* Navbar button */
+.navbar-nav .btn-primary-custom {
+    display: inline-flex !important;
+    width: auto !important;
+}
+
+/* Become a Donor */
+.home-hero .btn-primary-custom {
+    width: auto !important;
+    padding: 12px 26px !important;
+}
+
+/* Login button */
+.login-card .btn-primary-custom {
+    display: flex !important;
+    width: 100% !important;
+}
+
+/* Edit icon button */
+.donor-table-card .btn-edit {
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    padding: 0 !important;
+    background: transparent !important;
+    color: #D0021B !important;
+    border: 1px solid #D0021B !important;
+    border-radius: 7px !important;
+    font-size: 16px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.donor-table-card .btn-edit:hover {
+    background: #D0021B !important;
+    color: #ffffff !important;
+}
+
+/* Delete icon button */
+.donor-table-card .btn-outline-danger {
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    padding: 0 !important;
+    border-radius: 7px !important;
+}
